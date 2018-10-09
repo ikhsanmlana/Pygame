@@ -9,9 +9,11 @@ class Ship():
         self.screen_rect = screen.get_rect()
 
         self.rect.centerx = self.screen_rect.centerx
+        self.rect.centery = self.screen_rect.centery
         self.rect.bottom = self.screen_rect.bottom
 
         self.center = float(self.rect.centerx)
+        self.center2 = float(self.rect.centery)
 
         self.moving_right = False
         self.moving_left = False
@@ -24,9 +26,10 @@ class Ship():
         if self.moving_left:
             self.center -= self.ai_settings.ship_speed_factor
         if self.moving_up:
-            self.center += self.ai_settings.ship_speed_factor
+            self.center2 -= self.ai_settings.ship_speed_factor
         if self.moving_down:
-            self.center -= self.ai_settings.ship_speed_factor
+            self.center2 += self.ai_settings.ship_speed_factor
         self.rect.centerx = self.center
+        self.rect.centery = self.center2
     def blitme(self):
         self.screen.blit(self.image, self.rect)
